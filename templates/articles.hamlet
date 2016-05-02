@@ -1,0 +1,13 @@
+<h1> Threads
+$if null articles
+    <p> No threads
+$else
+    <ul>
+        $forall Entity articleId article <- articles
+            <li> 
+                <a href=@{ArticleR articleId} > #{articleTitle article}
+<hr>
+  <form method=post enctype=#{enctype}>
+    ^{articleWidget}
+    <div>
+        <input type=submit value="New Thread">
