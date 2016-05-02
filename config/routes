@@ -7,4 +7,5 @@
 
 /b HomeR GET POST
 /b/#ArticleId ArticleR GET
-/comment CommentR GET POST
+
+/comment/#ArticleId CommentR GET

@@ -12,3 +12,7 @@ Article
     title   Text
     content Html 
     deriving
+Comment
+    text   Text
+    articleId ArticleId
+    deriving

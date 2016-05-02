@@ -1,9 +1,20 @@
 module Handler.Comment where
 
 import Import
+import Database.Persist
+import Database.Persist.Types
 
-getCommentR :: Handler Html
-getCommentR = error "Not yet implemented: getCommentR"
+import Database.Persist.Sqlite
+
+
+getCommentR :: ArticleId -> Handler Html
+--getCommentR = defaultLayout [whamlet| get coments|]
+getCommentR articleId = do
+    article <- runDB $ get404 articleId
+    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentText]
+    defaultLayout $ do
+        $(widgetFile "showcomments")
+
 
 postCommentR :: Handler Html
-postCommentR = error "Not yet implemented: postCommentR"
+postCommentR = defaultLayout [whamlet| post coments|]

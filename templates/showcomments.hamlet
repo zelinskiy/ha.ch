@@ -1,0 +1,11 @@
+<h1>Thread #{articleTitle article}
+<p>#{articleContent article}
+<h1> Comments
+$if null comments
+    <p> No comments
+$else
+    <ul>
+        $forall Entity commentId comment <- comments
+            <li> 
+                <p> #{commentText comment}
+<hr>
