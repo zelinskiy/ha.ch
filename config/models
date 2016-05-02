@@ -13,6 +13,6 @@ Article
     content Html 
     deriving
 Comment
-    text   Text
     articleId ArticleId
+    text   Text    
     deriving

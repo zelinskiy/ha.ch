@@ -8,4 +8,4 @@
 /b HomeR GET POST
 /b/#ArticleId ArticleR GET
 
-/comment/#ArticleId CommentR GET
+/comment/#ArticleId CommentR GET POST

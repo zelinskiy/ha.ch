@@ -9,3 +9,8 @@ $else
             <li> 
                 <p> #{commentText comment}
 <hr>
+
+  <form method=post enctype=#{enctype}>
+    ^{commentWidget}
+    <div>
+        <input type=submit value="New Comment">
