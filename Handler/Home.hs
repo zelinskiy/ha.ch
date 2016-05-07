@@ -43,10 +43,34 @@ postHomeR = do
 
 
 
+myForm :: ArticleId -> Form Comment
+myForm articleId = renderDivs $ Comment
+    <$> pure   articleId
+    <*> areq   textField "Text" Nothing
+
+
+
 getArticleR :: ArticleId -> Handler RepHtml
 getArticleR articleId = do
     article <- runDB $ get404 articleId
+    --
+    (commentWidget, enctype) <- generateFormPost (myForm articleId)
+    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentText]
+    --
     defaultLayout $ do
         setTitle $ toHtml $ articleTitle article
         $(widgetFile "article")
+
+
+
+postArticleR :: ArticleId -> Handler Html
+postArticleR articleId = do
+    ((res,commentWidget),enctype) <- runFormPost (myForm articleId)
+    case res of 
+         FormSuccess comment -> do 
+            commentId <- runDB $ insert comment
+            redirect $ ArticleR articleId
+         _ -> defaultLayout $ do
+                setTitle "Please correct your entry form"        
+
 

@@ -1,2 +1,16 @@
 <h1> #{articleTitle article}
 <article> #{articleContent article}
+
+<h1> Comments
+$if null comments
+    <p> No comments
+$else
+    <ul>
+        $forall Entity commentId comment <- reverse $ comments
+            <li> 
+                <p> #{commentText comment}
+
+<form method=post enctype=#{enctype}>
+    ^{commentWidget}
+    <div>
+        <input type=submit value="New Comment">

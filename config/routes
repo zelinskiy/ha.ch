@@ -6,6 +6,6 @@
 
 
 /b HomeR GET POST
-/b/#ArticleId ArticleR GET
+/b/#ArticleId ArticleR GET POST
 
 /comment/#ArticleId CommentR GET POST
