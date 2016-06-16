@@ -10,7 +10,7 @@ Email
     UniqueEmail email
 Article
     title   Text
-    content Html 
+    content Textarea 
     deriving
 Comment
     articleId ArticleId

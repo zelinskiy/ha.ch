@@ -1,4 +1,21 @@
-<h1> Threads
+
+
+
+<p id="boardsShortList">[<a href="/b">b</a>] [<a href="/a">a</a>] [<a href="/hw">hw</a>]
+
+
+<h1 id="boardTitleHeading"> Бред
+
+<hr>
+
+
+<form method=post enctype=#{enctype}>
+    ^{articleWidget}
+    <div>
+        <input type=submit value="New Thread">
+
+
+<hr>
 $if null articles
     <p> No threads
 $else
@@ -6,8 +23,5 @@ $else
         $forall Entity articleId article <- articles
             <li> 
                 <a href=@{ArticleR articleId} > #{articleTitle article}
-<hr>
-  <form method=post enctype=#{enctype}>
-    ^{articleWidget}
-    <div>
-        <input type=submit value="New Thread">
+
+  

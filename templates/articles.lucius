@@ -1,0 +1,17 @@
+
+
+label{
+	padding: 5px;
+	padding-top: 0px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+#boardTitleHeading{
+	text-align: center;
+}
+
+#boardsShortList{
+	text-align: right;
+}

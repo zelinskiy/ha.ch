@@ -26,7 +26,7 @@ getCommentR :: ArticleId -> Handler Html
 getCommentR articleId = do
     article <- runDB $ get404 articleId
     (commentWidget, enctype) <- generateFormPost (entryForm articleId)
-    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentText]
+    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentId]
     defaultLayout $ do
         $(widgetFile "showcomments")
 

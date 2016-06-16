@@ -5,16 +5,22 @@ where
 import Import
 --import Data.Monoid
 
+
 -- to use Html into forms
 import Yesod.Form.Nic (YesodNic, nicHtmlField)
+--import Yesod.Message (RenderMessage)
+
 instance YesodNic App
+
+
 
 
 
 entryForm :: Form Article
 entryForm = renderDivs $ Article
-    <$> areq   textField "Title" Nothing
-    <*> areq   nicHtmlField "Content" Nothing
+    <$> areq textField (FieldSettings "Title" Nothing (Just "NewOpTitleInput") Nothing []) Nothing
+
+    <*> areq textareaField (FieldSettings "Text" Nothing (Just "NewOpTextInput") Nothing [("cols", "30")]) Nothing
 
 
 -- The view showing the list of articles
@@ -55,7 +61,7 @@ getArticleR articleId = do
     article <- runDB $ get404 articleId
     --
     (commentWidget, enctype) <- generateFormPost (myForm articleId)
-    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentText]
+    comments <- runDB $ selectList [CommentArticleId ==.  articleId] [Desc CommentArticleId]
     --
     defaultLayout $ do
         setTitle $ toHtml $ articleTitle article
